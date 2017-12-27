@@ -1,0 +1,28 @@
+<div class="lg-preview-wrapper" v-show="preview.show" @click="leave">
+
+    <div class="lg-preview-loading" v-show="preview.loading">
+        <!-- <div></div> -->
+        <i class="weui-loading weui-icon_toast"></i>
+    </div>
+    <!-- swiper -->
+    <!-- <transition name="fade"> -->
+    <div class="swiper-container" ref="imgSwiper" v-show="!preview.loading">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="item in preview.list">
+                <img class="lg-preview-img" v-if="item.src" :src="item.src" :alt="item.title">
+            </div>
+        </div>
+    </div>
+    <!-- </transition> -->
+    <!-- <img class="lg-preview-img" v-if="preview.current.src" :src="preview.current.src" :alt="preview.current.title" v-show="!preview.loading"> -->
+    <!-- <div class="lg-preview-title" v-if="preview.isTitleEnable && preview.current.title" v-show="!preview.loading">
+            {{preview.current.title}}
+        </div>
+        <div class="lg-preview-nav-left" v-if="preview.isHorizontalNavEnable" v-show="!preview.loading">
+            <span class="lg-preview-nav-arrow" @click="preAction"></span>
+        </div>
+        <div class="lg-preview-nav-right" v-if="preview.isHorizontalNavEnable" v-show="!preview.loading">
+            <span class="lg-preview-nav-arrow" @click="nextAction"></span>
+        </div> -->
+
+</div>

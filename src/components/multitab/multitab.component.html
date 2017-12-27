@@ -1,0 +1,27 @@
+<div class="tabs-view">
+    <div v-for="(tab, i) in tabs" v-if="i<maxItem-1" class="navbar__item" @click="tabChange(i)" :style="{backgroundColor:tabIndex==i?custStyle.itemOnColor:custStyle.itemColor,color:tabIndex==i?custStyle.textOnColor:custStyle.textColor}">
+        <div class="navbar__item_line" :style="{borderTopColor:tabIndex==i?custStyle.lineOnColor:custStyle.lineColor}"></div>
+        {{tab}}
+    </div>
+
+    <!-- 最后一项 -->
+    <div v-if="tabs.length==maxItem" class="navbar__item" @click="tabChange(maxItem-1)" :style="{backgroundColor:tabIndex==maxItem-1?custStyle.itemOnColor:custStyle.itemColor,color:tabIndex==maxItem-1?custStyle.textOnColor:custStyle.textColor}">
+        <div class="navbar__item_line" :style="{borderTopColor:tabIndex==maxItem-1?custStyle.lineOnColor:custStyle.lineColor}"></div>
+        {{tabs[maxItem-1]}}
+    </div>
+
+    <div v-if="tabs.length>maxItem" class="more-tab weui-flex" @click="expandMenu()" :style="{backgroundColor:tabIndex>=maxItem?custStyle.itemOnColor:custStyle.itemColor}">
+        <div class="navbar__item_line" :style="{borderTopColor:tabIndex>=maxItem-1?custStyle.lineOnColor:custStyle.lineColor,color:tabIndex < maxItem-1?custStyle.textOnColor:custStyle.textColor}"></div>
+        <!-- <div class="vline"></div> -->
+        <!-- <span>{{tabIndex
+            < maxItem-1 ? more:tabs[tabIndex]}}</span> -->
+            <span>{{tabMoreText()}}</span>
+        <i class="iconfont icon-gengduo"></i>
+    </div>
+    <div v-show="isMenuExpanded">
+        <div class="expand-menu-background" @click="expandMenu"></div>
+        <div class="expand-menu bubble">
+            <div v-for="(tab,i) in tabs" v-if="i>=maxItem-1" class="menu-item" @click.stop="tabChange(i)">{{tab}}</div>
+        </div>
+    </div>
+</div>

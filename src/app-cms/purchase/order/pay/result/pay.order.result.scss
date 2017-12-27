@@ -1,0 +1,48 @@
+.result-panel-container {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    .weui-cell {
+        border: none;
+        &:before,
+        &:after {
+            border: none;
+        }
+        &:first-child{
+            margin-top: 60px;
+        }
+    }
+    .result-messgae {
+        // background-color: #f2f2f2;
+        color: #333;
+        line-height: 46px;
+        border-radius: 5px;
+        margin: 0 auto;
+        font-size: 14px;
+        &-min {
+            width: 100px;
+            height: 46px;
+        }
+    }
+    .result-messgae-min{
+        font-size: 21.5px;
+        width: auto;
+    }
+    .result-messgae-payMsg{
+        width: 80%;
+        min-height: 100px;
+        line-height: .3rem;
+        text-align: center;
+        color: #808080;
+        font-size: 18px;
+    }
+    .weui-btn_plain-default{
+        border: 0;
+        background: #cccccc;
+        color: #ffffff;
+    }
+}

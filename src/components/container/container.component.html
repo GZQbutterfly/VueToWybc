@@ -1,0 +1,19 @@
+<div class="app-container" @touchstart="touchStart($event)" @touchmove="touchMove($event)" @touchend="touchEnd($event)" ref="containerRef">
+    <!-- :on-refresh="refresh" :on-infinite="infinite" -->
+    <!-- <scroller>
+        <div slot="refresh-spinner" style="height:20px">
+            <span></span>
+        </div>
+        <slot></slot>
+        <div  slot="infinite-spinner" style="height:10px">
+            <span></span>
+        </div>
+    </scroller> -->
+    <slot name="header"></slot>
+    <div class="app-container__bd" ref="contentRef">
+        <div class="app-container__main" v-show="showContent">
+            <slot></slot>
+        </div>
+    </div>
+    <slot name="footer"></slot>
+</div>

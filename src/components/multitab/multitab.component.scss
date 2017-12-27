@@ -1,0 +1,106 @@
+.tabs-view {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    z-index: 500;
+    top: 0;
+    width: 100%;
+    background-color: #ffffff;
+    .navbar__item {
+        position: relative;
+        display: block;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        padding: 0.13rem 0;
+        text-align: center;
+        font-size: 0.15rem;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .navbar__item_line {
+        border-top: 1px solid;
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+    }
+    .more-tab {
+        position: relative;
+        display: flex;
+        width: 1.0rem;
+        padding: 0.05rem 0;
+        text-align: center;
+        font-size: 0.15rem;
+        -webkit-tap-highlight-color: transparent;
+        .vline {
+            position: absolute;
+            width: 1px;
+            background-color: #b3b3b3;
+            height: 40%;
+            top: 30%;
+        }
+        span {
+            font-size: .15rem;
+            position: relative;
+            text-align: center;
+            line-height: .4rem;
+            flex: 1;
+        }
+        i {
+            text-align: center;
+            position: relative;
+            line-height: .4rem;
+            font-size: .22rem;
+        }
+    }
+    .more-tab:before {
+        content: '';
+        position: relative;
+        right: 0;
+        top: .1rem;
+        height: .2rem;
+        left: 2px;
+        width: 1px;
+        background-color: #e6e6e6;
+    }
+    .expand-menu {
+        position: absolute;
+        padding: 0.1rem;
+        border-radius: 4px;
+        flex-direction: column;
+        right: .1rem;
+        top: .5rem;
+        width: 1rem;
+        background-color: #37363c;
+        .menu-item {
+            font-size: .15rem;
+            line-height: .45rem;
+            text-align: center;
+            color: #FFFFFF;
+        }
+        .menu-background {
+            position: absolute;
+            background-color: gray;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    // .bubble:before {
+    //     content: "";
+    //     position: absolute;
+    //     bottom: 0;
+    //     border: 0.34rem solid  ;
+    //     border-bottom-color: #37363c;
+    //     margin: -100% 0 0 0 ;
+    // }
+    .expand-menu-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -100;
+    }
+}

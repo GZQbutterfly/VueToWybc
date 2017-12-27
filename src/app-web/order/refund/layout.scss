@@ -1,0 +1,39 @@
+.refund-layout-container {
+    display: block;
+    .photo-container {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex: 3;
+        .photo-box {
+            position: relative;
+            $width: 70px;
+            width: $width;
+            height: $width;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            overflow: hidden;
+            .photo-box-add {
+                color: #969696;
+                border: 1px dashed #dfdfdf;
+                text-align: center;
+                line-height: 68px;
+            }
+            img {
+                width: inherit;
+            }
+        }
+    }
+    .order-refund-goods-title{
+        margin-left: 15px;
+    }
+    .weui-icon-warn{
+        color: #f9820d;
+    }
+    .weui-form-preview__bd {
+        background-color: #fff;
+        color: #595959;
+    }
+
+}

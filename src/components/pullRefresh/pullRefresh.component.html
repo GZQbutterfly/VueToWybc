@@ -1,0 +1,15 @@
+<scroller :on-refresh="refreshC" ref="my_scroller" :on-infinite="infiniteC" class="scroller">
+    <div slot="refresh-spinner" style="height:160px;">
+        <img src="/static/images/newshop/pul.gif" alt="" style="height:0.3rem;width:0.2rem;">
+    </div>
+    <slot></slot>
+    <div id="main" class="spinner" slot="infinite-spinner">
+        <div class="loadingBox">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</scroller>

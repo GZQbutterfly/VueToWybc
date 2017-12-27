@@ -1,0 +1,32 @@
+<div class="pay-order">
+    <div class="weui-cells">
+        <div class="weui-cell" :to="'userAddress'">
+            <div class="weui-cell__hd">
+                <figure>
+                    <img src="/static/images/newshop/paytime.png" />
+                </figure>
+                <p>支付剩余时间</p>
+                <p class="leftTime" v-html="formatDate"></p>
+            </div>
+        </div>
+    </div>
+    <div class="weui-cells">
+        <template v-for="item in dataList">
+            <div class="weui-cell" v-if="item.created">
+                <div class="weui-cell__bd">
+                    {{ item.name }}
+                </div>
+                <div class="weui-cell__ft" :class="'color-' + item.color">
+                    {{ item.value }}
+                </div>
+            </div>
+        </template>
+    </div>
+    <div class="goPay weui-cells">
+        <div class="weui-cell" :to="'userAddress'" @click="goPay">
+            <div class="weui-cell__hd">
+                确认支付
+            </div>
+        </div>
+    </div>
+</div>

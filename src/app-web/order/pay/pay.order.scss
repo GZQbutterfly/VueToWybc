@@ -1,0 +1,62 @@
+.pay-order{
+    .weui-cells{
+        margin-top: .05rem;
+        &:first-child{
+            margin-top: 0;
+            .weui-cell{
+                padding-top: .4rem;
+                padding-bottom: .4rem;
+            }
+        }
+        &.goPay{
+            width: 100%;
+            background: #7ecc44;
+            position: fixed;
+            bottom: 0;
+            .weui-cell__hd{
+                font-size: .19rem;
+                color: #ffffff;
+            }
+        }
+        .weui-cell{
+            font-size: .145rem;
+            padding: .18rem;
+            color: #333333;
+            &:before{
+                left: 0;
+            }
+            .color-ff1c1c{
+                color: #ff1c1c;
+            }
+            .color-ee893e{
+                color: #ee893e;
+            }
+            .color-333333{
+                color: #333333;
+            }
+            .weui-cell__hd{
+                margin: 0 auto;
+                text-align: center;
+                figure{
+                    width: .5535rem;
+                    height: .504rem;
+                    margin: 0 auto;
+                }
+                p{
+                    margin-top: .2rem;
+                }
+                .leftTime{
+                    margin-top: .1rem;
+                    color: #ff752a;
+                    letter-spacing:2px;
+                    span{
+                        border: 1px solid #ffba94;
+                        padding-left: .02rem;
+                        margin-right: .02rem;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+<div class="search_box">
+    <!-- 顶部搜索框 -->
+    <div class="search_bar">
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <form class="frm_search iconfont" @submit="func_search_submit" :class="{'searching':!txt_search_keyword}">
+                        <input type="text" id="ipt_search" class="ipt_search_keyword" autocomplete="off" spellcheck="false" ref="ipt_search" :placeholder="txt_search_placeholder"
+                            v-model="txt_search_keyword" @click="func_search_iptClick">
+                        <mark class="btn_search_clear" @click="func_search_clear" v-show="bool_search_searching&&txt_search_keyword">
+                            <i class="weui-icon-clear"></i>
+                        </mark>
+                    </form>
+                </div>
+                <div class="weui-cell__ft">
+                    <p class="btn_search" @click="func_search_btnClick" v-text="bool_search_searching?'搜索':'取消'"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- search before -->
+    <div class="search_beforePage" v-show="bool_search_searching&&(!txt_search_keyword||!bool_search_hasHint)">
+        <slot name="search_beforePage">搜索等待</slot>
+    </div>
+    <!-- keyword list -->
+    <div class="search_keywordList" v-show="bool_search_hasHint&&bool_search_searching&&txt_search_keyword">
+        <slot name="search_keywordList">
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd" @click="func_search_wordClick">ttt</div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd" @click="func_search_wordClick">aa</div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd" @click="func_search_wordClick">bbd</div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd" @click="func_search_wordClick">ccc</div>
+                </div>
+            </div>
+        </slot>
+    </div>
+    <!-- search after -->
+    <div class="search_afterPage" v-show="!bool_search_searching">
+        <slot name="search_afterPage">搜索结果</slot>
+    </div>
+</div>

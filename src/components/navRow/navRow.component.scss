@@ -1,0 +1,36 @@
+.navRow {
+    height: 0.5rem;
+    width: 100%;
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+        .swiper-wrapper {
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-slide {
+            height: 100%;
+            div {
+                height: 0.5rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                img {
+                    width: 0.18rem;
+                    height: 0.18rem;
+                }
+                b {
+                    font-weight: normal;
+                    font-size: 0.15rem;
+                    display: block;
+                    height: 0.2rem;
+                    line-height: 0.22rem;
+                }
+            }
+            .active {
+                color: #7dcc43;
+            }
+        }
+    }
+}

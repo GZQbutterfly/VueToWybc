@@ -1,0 +1,45 @@
+.refund-dialog-container {
+    position: fixed;
+    z-index: 5000;
+    width: 80%;
+    left: 10%;
+    top: 35%;
+    max-width: none;
+    transform: scale3d(1, 1, 1);
+    border-radius: 0.1rem;
+    background-color: #fff;
+    overflow: hidden;
+    text-align: center;
+    .refund-dialog-title {
+        height: 50px;
+        line-height: 50px;
+        width: 90%;
+        margin: 5px auto;
+        border-bottom: 1px dashed #ddd;
+        .refund-dialog-close {
+            position: absolute;
+            right: 5px;
+            top: -7px;
+        }
+    }
+    .weui-cell {
+        border: none;
+    }
+    .active {
+        color: #7ecc44;
+        height: 22px;
+        position: relative;
+        &:after {
+            content: " ";
+            position: absolute;
+            display: block;
+            left: 9px;
+            bottom: 3.5px;
+            border-radius: 10px;
+            height: 4px;
+            width: 4px;
+            border: 5px solid #7ecc44;
+            background-color: #7ecc44;
+        }
+    }
+}

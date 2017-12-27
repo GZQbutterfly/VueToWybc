@@ -1,0 +1,28 @@
+<div class="result-panel-container">
+    <div class="weui-cell">
+        <div class="weui-cell__bd text-center">
+            <i class=" weui-icon_msg" :class="{'weui-icon-success': resultScope.success, 'weui-icon-warn': !resultScope.success}"></i>
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__bd text-center">
+            <div class="result-messgae result-messgae-min">
+                {{resultScope.message}}
+            </div>
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <div class="result-messgae result-messgae-payMsg" v-html="resultScope.showmsg"></div>
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__bd text-center">
+            <button class="weui-btn weui-btn_primary" @click="doOk" v-if="resultScope.success">确认</button>
+            <template v-else>
+                <button class="weui-btn weui-btn_primary" @click="onceAgain">继续支付</button>
+                <button class="weui-btn weui-btn_plain-default" @click="doOk">取消支付</button>
+            </template>
+        </div>
+    </div>
+</div>

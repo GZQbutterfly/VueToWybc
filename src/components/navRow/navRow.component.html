@@ -1,0 +1,12 @@
+<div class="navRow">
+    <div class="swiper-container" ref="navSwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="(item,index) in navList">
+                <div :class="[activatedIndex==index?'active':'']" @click="itemSelect(index,item)">
+                    <img :src="item.unselectedImgUrl" />
+                    <b >{{item.classifyName}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

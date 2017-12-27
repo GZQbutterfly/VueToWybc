@@ -1,0 +1,26 @@
+.vw-info {
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    color: #fff;
+    background: rgba(0, 0, 0, .6);
+    text-align: center;
+    overflow: hidden;
+    &-container {
+        a {
+            text-decoration: underline;
+            color: inherit;
+        }
+    }
+}
+
+.vw-info__success {
+    background: #1aad19;
+}
+
+.vw-info__warn {
+    background: #e64340;
+}

@@ -1,0 +1,41 @@
+<div class="popup-layout app-dialog" ref="dialogRef">
+    <div class="popup-mode" v-if="options.mode"></div>
+    <div class="popup-container" :style="popupContainerStyle" ref="popupContainer">
+        <!-- header -->
+        <header class="popup-header" :class="{'layout-horizontal':options.direction=='h', 'layout-vertical': options.direction=='v'}">
+            <div class="header" slot="header">
+                <div class="popup-header_hd">
+                    <i :class="options.icon" v-if="options.icon"></i>
+                </div>
+                <div class="popup-header_bd" v-if="options.title">
+                    <strong class="weui-dialog__title">{{options.title}}</strong>
+                </div>
+                <div class="popup-header_ft" v-if="options.close">
+                    <i class="icon iconfont icon-cuowu" @click="fn(options.closeFn)"></i>
+                </div>
+            </div>
+        </header>
+        <!-- content -->
+        <section class="popup-body" :style="popupBodyStyle">
+            <div class="swiper-container popup-content" ref="popupSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <slot></slot>
+                    </div>
+                </div>
+                <div class="swiper-scrollbar" ref="popupSwiperScorllbar"></div>
+            </div>
+        </section>
+        <!-- footer -->
+        <footer class="popup-footer">
+            <div class="toolbar" slot="footer">
+                <button class="popup-btn  default" v-if="options.assistBtn" @click="fn(options.assistFn)">
+                    {{options.assistBtn}}
+                </button>
+                <button class="popup-btn main" v-if="options.mainBtn" @click="fn(options.mainFn)">
+                    {{options.mainBtn}}
+                </button>
+            </div>
+        </footer>
+    </div>
+</div>

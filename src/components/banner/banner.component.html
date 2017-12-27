@@ -1,0 +1,26 @@
+<!-- <app-swiper :options="swiperOption">
+    <app-swiper-slide v-for="str in listImg" key="index">
+        <img :src="str.url" alt="banner">
+    </app-swiper-slide>
+    <div class="swiper-pagination" slot="pagination" v-if="listImg.length > 1"></div>
+</app-swiper> -->
+
+<div class="swiper-container" ref="bannerSwiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="(str, index) in listImg" key="index">
+            <div @click="goDetile($event,str.linkTarget,str.goodsId)" v-if="index == 0">
+                <template>
+                    <!-- <img :src="str.url"> -->
+                    <progressive-img :src="str.url" :placeholder="str.url" />
+                </template>
+            </div>
+            <template v-if="index != 0">
+                <!-- <img :src="str.url">  -->
+                <img v-lazy="str.url" @click="goDetile($event,str.linkTarget,str.goodsId,str.linkType)" />
+                <!-- <img class="swiper-lazy" :data-src="str.url" :data-srcset="str.url + ' 2x'">
+                <div class="swiper-lazy-preloader"></div> -->
+            </template>
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>

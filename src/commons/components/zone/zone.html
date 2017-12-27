@@ -1,0 +1,21 @@
+<div class="zone-address-picker" ref="zoneContainer">
+    <!-- head -->
+    <header class="zone-address-hd">
+        <div class="zone-address-hd_lf" v-if="showContent">
+            <i class="icon iconfont icon-xiangshangjiantou  btnPrev" @click="prev"></i>
+            <i class="icon iconfont icon-xiangxiajiantou  btnNext" @click="next" :class="{'active': dataList.length > 1}"></i>
+        </div>
+        <div class="zone-address-hd_rt">
+            <div class="btn" @click="select">完成</div>
+        </div>
+    </header>
+    <!-- Swiper content -->
+    <div class="swiper-container zone-address-content" ref="zoneSwiper" v-if="showContent">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="(item, index) in dataList">
+                {{item.na}}
+            </div>
+        </div>
+        <div class="address-select-line"></div>
+    </div>
+</div>

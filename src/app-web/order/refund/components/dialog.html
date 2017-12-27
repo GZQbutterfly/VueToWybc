@@ -1,0 +1,25 @@
+<div>
+    <div class="weui-mask"></div>
+    <transition name="popup">
+        <div class="refund-dialog-container">
+            <header class="refund-dialog-title">
+                {{title}}
+                <div class="refund-dialog-close" @click="close()">
+                    <i class="wybc-icon-min wybc-icon-close"></i>
+                </div>
+            </header>
+
+            <section class="refund-dialog-content">
+                <div class="weui-cell" v-for="item in list" @click="select(item)">
+                    <div class="weui-cell_hd">
+                        <i class="weui-icon-circle" :class="{'active': item.co === co}"></i>
+                    </div>
+                    <div class="weui-cell_bd">{{item.na}}</div>
+                </div>
+            </section>
+            <footer class="refund-dialog-footer">
+
+            </footer>
+        </div>
+    </transition>
+</div>

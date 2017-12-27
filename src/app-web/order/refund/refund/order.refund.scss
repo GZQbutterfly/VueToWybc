@@ -1,0 +1,66 @@
+.order-refund-container {
+    color: #595959;
+    .order-refund-content {
+        
+        .weui-form-preview__label {
+            color: #595959;
+        }
+        .weui-cells {
+            background-color: #fff;
+            margin-top: 8px;
+            .weui-cell {
+                align-items: flex-start;
+            }
+        }
+    }
+    .order-refund-notapply {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        padding-top: 40%;
+        padding-left: 20%;
+        text-align: center;
+        img {
+            width: 100px;
+        }
+        .notapply-header,
+        .notapply-content,
+        .notapply-footer {
+            width: 70%;
+            color:#b3b3b3;
+        }
+        .notapply-footer{
+            font-size: 15px;
+            margin-top: 10px;
+        }
+    }
+    .btn-submit {
+        border-radius: 0;
+    }
+    .wybc-icon-img-del{
+        position: absolute;
+        top: 0px;
+        right: 0;
+        background-color: #ee893e;
+        height: 16px;
+        width: 16px;
+        display: inline-block;
+        border-radius: 8px;
+        &::before{
+            content: " ";
+            position: absolute;
+            top: 7px;
+            left: 2px;
+            width: 9px;
+            display: block;
+            border: 1px solid #fff;
+        }
+    }
+    .upload-img-title{
+        color: #d1d1d1;
+    }
+    
+}

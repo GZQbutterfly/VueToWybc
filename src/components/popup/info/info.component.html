@@ -1,0 +1,7 @@
+<transition name="fade-down">
+    <div class="vw-info app-dialog" :class="{'vw-info__success': type === 'success', 'vw-info__warn': type === 'warn'}" v-if="showIt">
+        <div class="vw-info-container">
+            {{content}}
+        </div>
+    </div>
+</transition>

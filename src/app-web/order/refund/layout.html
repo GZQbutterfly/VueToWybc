@@ -1,0 +1,14 @@
+<div class="refund-layout-container">
+    <header></header>
+
+    <section>
+        <!-- 申请退款页面 -->
+        <order-refund v-if="refundType === 'refund'" :params="params"></order-refund>
+        <order-refunding v-if="refundType === 'refunding'" :params="params"></order-refunding>
+        <order-refunded v-if="refundType === 'refunded'" :params="params"></order-refunded>
+    </section>
+
+    <footer>
+
+    </footer>
+</div>

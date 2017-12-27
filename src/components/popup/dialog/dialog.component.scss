@@ -1,0 +1,76 @@
+.popup-enter-active,
+.popup-leave-active {
+    transition: all .2s;
+}
+
+.popup-enter,
+.popup-leave-active {
+    opacity: 0;
+}
+
+.weui-dialog {
+    left: 10%;
+    top: 20%;
+    max-width: none;
+    transform: scale3d(1, 1, 1);
+    border-radius: 10px;
+    .weui-dialog__hd{
+        background-color: #fff;
+    }
+   
+    .weui-dialog__bd {
+        background-color: #fff;
+        line-height: 25px;
+    }
+    .dialog_info_img {
+        height: 55px;
+        width: 55px;
+        // line-height: 55px;
+        margin: auto;
+        border-radius: 30px;
+        margin-bottom: 10px;
+    }
+    .error{
+        border: 2px solid #f8b9b9;
+        .icon{
+            font-size: 36px;
+            color: #f27474;
+            font-weight: bold;
+        }
+    }
+    .success{
+        border: 2px solid #bae496;
+        .icon{
+            font-size: 36px;
+            color: #7ecc44;
+            font-weight: bold;
+
+        }
+    }
+    .info{
+        border: 2px solid #fac1a5;
+        .icon{
+            font-size: 36px;
+            color: #f6834b;
+        }
+    }
+    .dialog-first {
+        height: 100%;
+        display: inline-block;
+        background-color: #f5f5f5;
+        color: #8f8f8f;
+    }
+    .dialog-last {
+        height: 100%;
+        display: inline-block;
+        background-color: #7ecc44;
+        color: #e5f4da;
+    }
+    .weui-dialog__ft{
+        bottom: 0px;
+    }
+}
+
+.weui-mask {
+    opacity: .5;
+}

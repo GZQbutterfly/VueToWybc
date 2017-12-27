@@ -1,0 +1,88 @@
+.order-refunding-container {
+    .order-refunding-header {
+        background-color: #fff;
+        margin: 0 auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        .weui-icon-info-circle {
+            height: 20px;
+            width: 20px;
+            color: #fff;
+            
+            border-color: #f9820d;
+            border-radius: 11px;
+            &:before {
+                margin: 0;
+                position: relative;
+                top: -1px;
+                left: -2px;
+            }
+        }
+    }
+    .weui-cells {
+        margin-top: 8px;
+        color: #434343;
+        .weui-cell {
+            .weui-label {
+                width: 90px;
+            }
+        }
+    }
+    .order-refunding-info {
+        font-size: 14px;
+        padding-bottom: 5px;
+        .weui-cell {
+            padding-top: 5px;
+            padding-bottom: 0;
+            &:before {
+                border: none;
+            }
+        }
+    }
+    .order-refunding-goods {
+        font-size: 15px;
+        img {
+            width: 50px;
+        }
+        .weui-cell {
+            background-color: #fafafa;
+            &:before {
+                border: none;
+            }
+            .weui-cell_hd{
+                margin-left: 5px;
+            }
+            .weui-cell_bd {
+                margin-left: 10px;
+            }
+        }
+        .goods-total {
+            float: right;
+            margin: 5px 10px;
+            span {
+                margin-left: 10px;
+            }
+        }
+    }
+    .order-refunding-detail {
+        font-size: 15px;
+        color: #5a5a5a;
+        .hd_label {
+            margin-left: 15px;
+            margin-top: 10px;
+        }
+        .btn-cancel {
+            background-color: #f9820d;
+            border-radius: 0;
+        }
+        .btn-cancel-close{
+            background-color: #e6e6e6;
+            border-radius: 0;
+        }
+    }
+    .weui-cell_ft {
+        position: absolute;
+        right: 10px;
+    }
+}

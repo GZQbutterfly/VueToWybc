@@ -1,0 +1,26 @@
+.toast-container {
+    position: fixed;
+    z-index: 30;
+    left: 0;
+    // bottom: 0;
+    top: 0;
+    right: 0;
+    max-width: 200px;
+    min-width: 120px;
+    z-index: 7000;
+    .weui-toast {
+        width: inherit;
+        max-width: 200px;
+        min-width: 120px;
+        left: inherit;
+        margin: 0 auto;
+        right: inherit;
+        .icon {
+            font-size: 25px;
+        }
+        .weui-toast__content {
+            margin: 5px 15px;
+            word-wrap: break-word;
+        }
+    }
+}

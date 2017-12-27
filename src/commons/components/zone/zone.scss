@@ -1,0 +1,55 @@
+.zone-address-picker {
+    height: 200px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 6000;
+    right: 0;
+    background-color: #f2f2f2;
+    .zone-address-hd {
+        background-color: #eeeff1;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        &_lf {
+            flex: 1;
+            padding-top: 7px;
+            padding-left: 15px;
+        }
+        &_rt {
+            flex: 1;
+            text-align: right;
+            color: #0a78d4;
+        }
+        .icon {
+            font-size: 22px;
+            margin-right: 5px;
+        }
+        .active {
+            color: #2775d1;
+        }
+        .btn {
+            margin-right: 15px;
+        }
+    }
+    .zone-address-content {
+        height: 160px;
+        text-align: center;
+        background-color: #c9ccd5;
+        font-size: 15px;
+    }
+    .swiper-slide {
+        height: 28px;
+        padding: 1px 0;
+    }
+    .address-select-line {
+        border-top: 1px solid #b3b3b3;
+        border-bottom: 1px solid #b3b3b3;
+        height: 27px;
+        position: absolute;
+        z-index: 9000;
+        left: 0;
+        top: 42%;
+        width: 100%;
+    }
+}

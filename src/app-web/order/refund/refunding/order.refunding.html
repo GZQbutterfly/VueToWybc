@@ -1,0 +1,162 @@
+<div class="order-refunding-container">
+
+    <header class="order-refunding-header">
+
+        <div v-if="!cancelFlag">
+            <i class="weui-icon-warn"></i>
+            <!-- 等待商家处理退款申请 -->
+            <label v-if="!cancelFlag">等待商家处理退款申请</label>
+            <!-- 买家已取消退款申请 -->
+            <label v-if="cancelFlag">买家已取消退款申请</label>
+        </div>
+
+
+    </header>
+
+    <section class="order-refunding-content">
+        <!-- 退款提示 -->
+        <div class="weui-cells order-refunding-info" v-if="!cancelFlag">
+            <!--  如商家同意 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">如商家同意：</label>
+                </div>
+                <div class="weui-cell_bd">
+                    <label>申请将达成并退款</label>
+                </div>
+            </div>
+            <!--  如商家拒绝 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">如商家拒绝：</label>
+                </div>
+                <div class="weui-cell_bd">
+                    <label>您任想继续退款，请直接联系客服</label>
+                    <div>
+                        客服电话：028-65779101
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 取消退款提示 -->
+        <div class="weui-cells order-refunding-info" v-if="cancelFlag">
+            <!--  退款关闭 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">退款关闭：</label>
+                </div>
+                <div class="weui-cell_bd">
+                    <label>您任想继续退款，请直接联系客服</label>
+                    <div>
+                        客服电话：028-65779101
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 退款商品 -->
+        <div class="weui-cells order-refunding-goods">
+            <div class="order-refund-goods-title">
+                退款商品
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <img :src="refundScope.refundGoods.coverImg" alt="商品图片">
+                </div>
+                <div class="weui-cell_bd">
+                    <label class="weui-label">{{refundScope.refundGoods.goodsName}}</label>
+                </div>
+                <div class="weui-cell_ft">
+                    <span class="label-money">{{refundScope.refundGoods.moneyPrice | localMoney}}</span>
+                </div>
+            </div>
+            <div class="goods-total">
+                <span>共计{{refundScope.refundGoods.number}}件商品</span>
+                <span>实付款：
+                    <span class="label-money">{{refundScope.refundGoods.totalMoney | localMoney}}</span>
+                </span>
+            </div>
+        </div>
+        <!-- 退款明细 -->
+        <div class="weui-cells order-refunding-detail">
+            <!-- 退款编号 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">退款编号</label>
+                </div>
+                <div class="weui-cell_ft">{{refundScope.refundOrder.refundNo}}</div>
+            </div>
+            <!-- 申请时间 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">申请时间</label>
+                </div>
+                <div class="weui-cell_ft">{{refundScope.refundOrder.applyTime}}</div>
+            </div>
+            <!-- 退款原因 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">退款原因</label>
+                </div>
+                <div class="weui-cell_ft">{{formScope.refundReason.na}}</div>
+            </div>
+            <!-- 处理方式 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">处理方式</label>
+                </div>
+                <div class="weui-cell_ft">{{formScope.processType.na}}</div>
+            </div>
+            <!-- 货物状态 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">货物状态</label>
+                </div>
+                <div class="weui-cell_ft">{{formScope.goodsState.na}}</div>
+            </div>
+            <!-- 退款金额 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">退款金额</label>
+                </div>
+                <div class="weui-cell_ft label-money">{{refundScope.refundOrder.totalMoney | localMoney}}</div>
+            </div>
+            <!-- 返还商城券 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">返还商城券</label>
+                </div>
+                <div class="weui-cell_ft label-money-volume">{{refundScope.refundOrder.totalMoneyRoll | localVolume}}券</div>
+            </div>
+            <!-- 退款备注 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label"> 退款备注</label>
+                    <div class="hd_label">
+                        {{refundScope.refundOrder.refundMark}}
+                    </div>
+                </div>
+                <!-- <div class="weui-cell_bd">我只想退款，不想退货</div> -->
+            </div>
+            <!-- 图片举证 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    图片举证
+                    <div class="photo-container hd_label">
+                        <div class="photo-box" v-for="file in fileList">
+                            <img  v-preview="file" :src="file">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <button class="btn-cancel weui-btn" type="button" @click="cancelRefund" v-if="!cancelFlag">取消退款申请</button>
+                <button class="btn-cancel-close weui-btn" type="button" @click="cancelRefund" v-if="cancelFlag" disabled>申请退款已关闭</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+
+    </footer>
+</div>

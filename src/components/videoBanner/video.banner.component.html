@@ -1,0 +1,11 @@
+<div class="swiper-container" :class="swiperClass">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" v-if="hasVideo">
+            <fsvideo :playerOptions="playerOptions" ></fsvideo> 
+        </div>
+         <div class="swiper-slide" v-for="(item,index) in dataList">
+            <img :src="item" alt="">
+            </style>>
+        </div> 
+    </div>
+</div>

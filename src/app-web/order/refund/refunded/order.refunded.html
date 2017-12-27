@@ -1,0 +1,145 @@
+<div class="order-refunded-container">
+    <header class="order-refunded-header">
+        <!-- 等待商家处理退款申请 -->
+        <div v-if="resultFlag">
+            <i class="weui-icon-success"></i>
+            <label>退款成功</label>
+        </div>
+        <div v-if="!resultFlag">
+            <i class="weui-icon-warn"></i>
+            <label>商家不同意退款申请</label>
+        </div>
+    </header>
+
+    <section>
+        <!-- 退款失败 -->
+        <div class="weui-cells order-refunded-info" v-if="!resultFlag">
+            <!--  拒绝理由 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">拒绝理由</label>
+                </div>
+                <div class="weui-cell_bd">
+                    {{refundScope.refundOrder.auditMsg}}
+                </div>
+            </div>
+            <!--  退款失败 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">退款失败</label>
+                </div>
+                <div class="weui-cell_bd">
+                    <label>您任想继续退款，请直接联系客服</label>
+                    <div>
+                        客服电话：028-65779101
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 退款成功 -->
+        <div class="weui-form-preview__bd" v-if="resultFlag">
+            <!--  退款金额 -->
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">退款金额</label>
+                <span class="weui-form-preview__value label-money">{{refundScope.refundOrder.totalMoney | localMoney}}</span>
+            </div>
+            <!-- 退还商城券 -->
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">退还商城券</label>
+                <span class="weui-form-preview__value label-money-volume">{{refundScope.refundOrder.totalMoneyRoll | localVolume}}券</span>
+            </div>
+            <!-- 退款时间-->
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">退款时间</label>
+                <span class="weui-form-preview__value label-money-volume">{{refundScope.refundOrder.auditTime}}</span>
+            </div>
+            <!--  退款流水号 -->
+            <!-- <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">退款流水号</label>
+                <span class="weui-form-preview__value">{{refundScope.refundOrder.auditSerial}}</span>
+            </div> -->
+            <!-- 退款路径 -->
+            <!-- <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">退款路径</label>
+                <span class="weui-form-preview__value">{{refundScope.refundOrder.auditPath}}</span>
+            </div> -->
+        </div>
+
+
+
+        <!-- 退款明细 -->
+        <div class="weui-cells order-refunded-detail">
+            <!-- 退款编号 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">退款编号</label>
+                </div>
+                <div class="weui-cell_ft">{{refundScope.refundOrder.refundNo}}</div>
+            </div>
+            <!-- 申请时间 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">申请时间</div>
+                <div class="weui-cell_ft">{{refundScope.refundOrder.applyTime}}</div>
+            </div>
+            <!-- 退款原因 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">退款原因</div>
+                <div class="weui-cell_ft">{{formScope.refundReason.na}}</div>
+            </div>
+            <!-- 处理方式 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">处理方式</div>
+                <div class="weui-cell_ft">{{formScope.processType.na}}</div>
+            </div>
+            <!-- 货物状态 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">货物状态</div>
+                <div class="weui-cell_ft">{{formScope.goodsState.na}}</div>
+            </div>
+            <!-- 退款金额 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">退款金额</div>
+                <div class="weui-cell_ft label-money">{{refundScope.refundOrder.totalMoney | localMoney}}</div>
+            </div>
+            <!-- 返还商城券 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">返还商城券</div>
+                <div class="weui-cell_ft label-money-volume">{{refundScope.refundOrder.totalMoneyRoll | localVolume}}券</div>
+            </div>
+        </div>
+
+        <!-- 退款商品 -->
+        <div class="weui-cells order-refunded-goods">
+            <!-- 订单编号 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">订单编号</label>
+                </div>
+                <div class="weui-cell_ft">{{refundScope.orderNo}}</div>
+            </div>
+            <div class="order-refund-goods-title">
+                退款商品
+            </div>
+            <div class="weui-cell goods-detail">
+                <div class="weui-cell_hd">
+                    <img :src="refundScope.refundGoods.coverImg" alt="商品图片">
+                </div>
+                <div class="weui-cell_bd">
+                    <label class="weui-label">{{refundScope.refundGoods.goodsName}}</label>
+                </div>
+                <div class="weui-cell_ft">
+                    <span class="label-money">{{refundScope.refundGoods.moneyPrice | localMoney}}</span>
+                </div>
+            </div>
+            <div class="goods-total">
+                <span>共计{{refundScope.refundGoods.number}}件商品</span>
+                <span>实付款：
+                    <span class="label-money">{{refundScope.refundGoods.totalMoney | localMoney}}</span>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <footer></footer>
+</div>

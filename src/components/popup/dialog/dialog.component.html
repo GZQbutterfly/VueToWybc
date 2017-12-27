@@ -1,0 +1,25 @@
+<div :class="{'weui-skin_android': android}" class="app-dialog" ref="dialogRef">
+    <div class="weui-mask"></div>
+    <transition name="popup">
+        <div class="weui-dialog" v-if="dialogObj" :style="dialogStyleObj">
+            <div class="weui-dialog__hd">
+                <div class="dialog_info_img"
+                     :class="dialogObj.type"
+                     v-if="dialogObj.type"
+                >
+                <!-- {'success': dialogObj.success == 'sucess', 'error': dialogObj.success == 'error', 'info': dialogObj.success == 'info'} -->
+                    <i class="icon iconfont"
+                       :class="{'icon-zhengque': dialogObj.type == 'success', 'icon-cuowu': dialogObj.type == 'error', 'icon-tanhao2': dialogObj.type == 'info'}"
+                    ></i>
+                </div>
+                <strong class="weui-dialog__title">{{dialogObj.title}}</strong>
+            </div>
+            <div class="weui-dialog__bd" v-html="dialogObj.content">
+            </div>
+            <div class="weui-dialog__ft">
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default dialog-first" v-if="dialogObj.assistBtn" @click="cbFn(dialogObj.assistFn)">{{dialogObj.assistBtn}}</a>
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary dialog-last" @click="cbFn(dialogObj.mainFn)">{{dialogObj.mainBtn}}</a>
+            </div>
+        </div>
+    </transition>
+</div>

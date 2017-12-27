@@ -1,0 +1,224 @@
+<div class="order-refund-container">
+    <!-- error tip -->
+    <header></header>
+    <!-- 可以申请退款 -->
+    <section class="order-refund-content" v-if="applyFlag">
+        <div class="weui-form-preview__bd">
+            <!--  商品名称 -->
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">商品名称</label>
+                <span class="weui-form-preview__value">{{refundScope.refundGoods.goodsName}}</span>
+            </div>
+            <!-- 实付金额 -->
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">实付金额</label>
+                <span class="weui-form-preview__value label-money">{{ refundScope.refundGoods.totalMoney | localMoney}}</span>
+            </div>
+            <!-- 使用惠品券 -->
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">使用惠品券</label>
+                <span class="weui-form-preview__value label-money-volume">{{refundScope.refundGoods.totalMoneyRoll | localVolume}}券</span>
+            </div>
+            <!--  订单编号 -->
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">订单编号</label>
+                <span class="weui-form-preview__value">{{refundScope.orderNo}}</span>
+            </div>
+            <!-- 交易时间 -->
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">付款时间</label>
+                <span class="weui-form-preview__value">{{refundScope.payTime}}</span>
+            </div>
+        </div>
+        <vue-form class="weui-cells" :state="formstate"  @submit.prevent="submitApplyRefund">
+            <!-- 处理方式 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">处理方式</label>
+                </div>
+                <div class="weui-cell_bd">
+                    <label class="weui-label">退货退款</label>
+                </div>
+            </div>
+            <!-- 货物状态 -->
+            <validate class="weui-cell" tag="div">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">货物状态</label>
+                </div>
+                <div class="weui-cell_bd" @click="dialogSelectGoodstStaus">
+                    <div class="weui-input text-ellipsis">{{formScope.goodsState.na}}
+                         <div v-show="!formScope.goodsState.na" class="text-placeholder">请选择收货情况</div>
+                    </div>    
+                    <input class="weui-input" 
+                           type="text" 
+                           placeholder="请选择收货情况" 
+                           disabled 
+                           v-model="formScope.goodsState.na"
+                           required
+                           name="goodsState"
+                           style="display:none"
+                           >
+                </div>
+                <div class="weui-cell_ft layout-ft" @click="dialogSelectGoodstStaus">
+                    <i class="icon iconfont icon-xiangyoujiantou"></i>
+                </div>
+            </validate>
+            <transition name="fadeUp">
+                <field-messages name="goodsState" show="$submitted" class="text-danger  error-tip">
+                    <div slot="required" v-show="formstate.goodsState && formstate.goodsState.$invalid">
+                            请选择货物状态
+                    </div>
+                </field-messages>
+            </transition>
+            <!-- 退款原因 -->
+            <validate class="weui-cell" tag="div">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">退款原因</label>
+                </div>
+                <div class="weui-cell_bd" @click="dialogSelectRefundReasons">
+                    <div class="weui-input text-ellipsis">{{formScope.refundReason.na}}
+                         <div v-show="!formScope.refundReason.na" class="text-placeholder">请选择退款原因</div>
+                    </div>                      
+                    <input class="weui-input" 
+                           type="text" 
+                           placeholder="请选择退款原因" 
+                           disabled 
+                           v-model="formScope.refundReason.na"
+                           name="refundReason"
+                           required
+                           style="display:none"
+                           >
+                </div>
+                <div class="weui-cell_ft layout-ft" @click="dialogSelectRefundReasons">
+                    <!-- wybc-icon wybc-icon-arrow-right -->
+                    <i class="icon iconfont icon-xiangyoujiantou"></i>
+                </div>
+            </validate>
+            <transition name="fadeUp">
+                <field-messages name="refundReason" show="$submitted" class="text-danger  error-tip">
+                    <div slot="required" v-show="formstate.refundReason && formstate.refundReason.$invalid">
+                            请选择退款原因
+                    </div>
+                </field-messages>
+            </transition>
+            <!-- 退款金额 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">退款金额</label>
+                </div>
+                <div class="weui-cell_bd">
+                    <label class="weui-label label-money"> {{ refundScope.refundGoods.totalMoney | localMoney}}</label>
+                </div>
+            </div>
+            <!-- 返还惠品券 -->
+            <div class="weui-cell">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">返还惠品券</label>
+                </div>
+                <div class="weui-cell_bd">
+                    <label class="weui-label label-money-volume"> {{refundScope.refundGoods.totalMoneyRoll | localVolume}}券</label>
+                </div>
+            </div>
+            <!-- 手机号码 -->
+            <validate class="weui-cell" tag="div">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">手机号码</label>
+                </div>
+                <div class="weui-cell_bd" style="width: 100%;">
+                    <input class="weui-input" 
+                           type="tel" 
+                           placeholder="填写手机号便于卖家联系您" 
+                           maxlength="11" 
+                           v-model="refundScope.phone" 
+                           name="phone"
+                           required
+                           check-phone 
+                           >
+                </div>
+            </validate>
+            <transition name="fadeUp">
+                    <field-messages name="phone" show="$submitted" class="text-danger  error-tip">
+                        <div slot="required" v-show="formstate.phone && formstate.phone.$invalid">
+                                请输入手机号码
+                        </div>
+                        <div slot="check-phone" v-show="formstate.phone && formstate.phone.$invalid">
+                                请输入正确格式的手机号码
+                        </div>
+                    </field-messages>
+            </transition>
+            <!-- 备注信息 -->
+            <validate class="weui-cell" tag="div">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">备注信息</label>
+                </div>
+                <div class="weui-cell_bd">
+                    <input class="weui-input" 
+                           type="text" 
+                           placeholder="最多可填写200字" 
+                           maxlength="200" 
+                           v-model="refundScope.refundMark"
+                           name="refundMark"
+                           required
+                           >
+                </div>
+            </validate>
+            <transition name="fadeUp">
+                    <field-messages name="refundMark" show="$submitted" class="text-danger  error-tip">
+                        <div slot="required" v-show="formstate.refundMark && formstate.refundMark.$invalid">
+                                请输入备注信息
+                        </div>
+                    </field-messages>
+            </transition>
+            <!-- 照片举证 -->
+            <div class="weui-cell" v-show="formScope.goodsState.co">
+                <div class="weui-cell_hd">
+                    <label class="weui-label">照片举证</label>
+                </div>
+                <div class="weui-cell_bd">   
+                    <input class="weui-input" type="text" placeholder="可上传5张照片" disabled>
+                    <input type="file" style="display:none;" ref="fileDom" @change="chageFile" multiple="multiple" accept="image/png">
+                    <div class="photo-container" ref="localFile">
+                        <div class="photo-box" @click="addFile" v-show="listFiles.length < 5">
+                            <div class="photo-box-add">
+                                +
+                            </div>
+                        </div>
+                        <div class="photo-box" v-for="(item, index) in listFiles">
+                            <transition name="fade-img">                              
+                                <img  v-if="item.url"  v-preview="item.url" :src="item.url" :data-index="index">
+                            </transition>  
+                            <span class="wybc-icon-img-del" @click="removeFile(item, index)" ></span>                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button class="weui-btn_primary weui-btn btn-submit" type="submit">提交</button>
+            </div>
+        </vue-form>
+    </section>
+    <!-- 不可申请退款 -->
+    <section v-if="!applyFlag" class="order-refund-notapply">
+        <div class="notapply-header">
+            <img src="static/images/newshop/shopbox.png" alt="提示">
+        </div>
+        <div class="notapply-content">
+            <div>
+                该商品暂不支持在线退款申请
+            </div>
+            <div>
+                请联系客服
+            </div>
+        </div>
+        <div class="notapply-footer">
+            客服电话：028-65779101
+        </div>
+    </section>
+
+    <footer class="order-refund-footer ">
+        <order-refund-dialog :list="goodsStateList" :selectItem="selectItem" :close="closeDialog" :co="formScope.goodsState.co"
+            v-if="dialogName === 'goods'"></order-refund-dialog>
+        <order-refund-dialog :list="refundReasonList" :selectItem="selectItem" :close="closeDialog" :co="formScope.refundReason.co"
+            v-if="dialogName === 'refund'"></order-refund-dialog>
+    </footer>
+</div>

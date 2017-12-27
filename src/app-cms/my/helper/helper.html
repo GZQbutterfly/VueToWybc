@@ -1,0 +1,30 @@
+<div class="helper">
+    <div class="sayHello">
+        <figure>
+            <img src="/static/images/minishop/lxkf.png" alt="">
+        </figure>
+    </div>
+    <div class="swiper-container" ref="helperSwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="data in dataList">
+                <progressive-img :src="data.imgUrl" :placeholder="data.imgUrl" />
+                <!-- <div class="header">
+                    <figure>
+                        <img :src="data.imgUrl" alt="">
+                    </figure>
+                    <div class="userInfo">
+                        <p>{{ data.staffName }}<i class="iconfont icon-sex"></i></p>
+                        <span>四川 成都</span>
+                    </div>
+                </div>
+                <figure class="content">
+                    <img :src="data.img" alt="">
+                </figure>
+                <p class="footer">扫一扫上面的二维码图案，加我微信</p> -->
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div>
